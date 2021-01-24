@@ -5,3 +5,8 @@ services:
     command: npm run dev
     volumes:
       - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/api/src:/usr/src/app/src
+
+  auth:
+    command: npm run dev
+    volumes:
+      - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/auth/src:/usr/src/app/src

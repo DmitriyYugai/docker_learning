@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model("Post", postSchema);
 
 const startServer = () => {
-    app.listen(3000, () => {
+    app.listen(port, () => {
         console.log(`Started API service on port: ${port}`);
         console.log(`On host: ${host}`);
         console.log(`Our database url: ${db}`);
