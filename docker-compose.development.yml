@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+  frontend:
+    command: npm run start
+    stdin_open: true
+    tty: true
+    volumes:
+      - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/frontend:/usr/src/app
+
   api:
     command: npm run dev
     volumes:

@@ -4,14 +4,10 @@ services:
   frontend:
     build: ./frontend
     container_name: realworld-docker-frontend
-    command: npm run start
+    command: serve -s build -l 3000
     restart: unless-stopped
     ports:
       - "3000:3000/tcp"
-    stdin_open: true
-    tty: true
-    volumes:
-      - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/frontend:/usr/src/app
 
   api:
     build: ./api
