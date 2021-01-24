@@ -16,4 +16,9 @@ services:
 
   api_db:
     image: mongo:4.1.8-xenial
+    volumes:
+      - mongodb_api:/data/db
+
+volumes:
+  mongodb_api:
 

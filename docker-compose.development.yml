@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  api:
+    command: npm run dev
+    volumes:
+      - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/api/src:/usr/src/app/src
