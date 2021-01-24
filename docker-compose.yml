@@ -1,15 +1,27 @@
 version: '3'
 
 services:
+  frontend:
+    build: ./frontend
+    container_name: realworld-docker-frontend
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3000:3000/tcp"
+    stdin_open: true
+    tty: true
+    volumes:
+      - /C_DRIVE/Users/ACER-PC/Desktop/docker/projects/realworld-docker/frontend:/usr/src/app
+
   api:
     build: ./api
     container_name: realworld-docker-api
     command: npm run start
     restart: unless-stopped
     ports:
-      - "3000:3000/tcp"
+      - "3001:3001/tcp"
     environment:
-      - PORT=3000
+      - PORT=3001
       - HOST=http://realworld-docker.com
       - MONGO_URL=mongodb://api_db:27017/api
     depends_on:
@@ -21,9 +33,9 @@ services:
     command: npm run start
     restart: unless-stopped
     ports:
-      - "3001:3001/tcp"
+      - "3002:3002/tcp"
     environment:
-      - PORT=3001
+      - PORT=3002
       - HOST=http://realworld-docker.com
       - MONGO_URL=mongodb://auth_db:27017/auth
     depends_on:
