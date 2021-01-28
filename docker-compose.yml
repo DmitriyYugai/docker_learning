@@ -8,6 +8,8 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000/tcp"
+    networks:
+      - realworld-docker-network
 
   api:
     build: ./api
@@ -23,6 +25,8 @@ services:
       - AUTH_API_URL=http://auth:3002/api
     depends_on:
       - api_db
+    networks:
+      - realworld-docker-network
 
   auth:
     build: ./auth
@@ -38,18 +42,24 @@ services:
       - API_URL=http://api:3001
     depends_on:
       - auth_db
+    networks:
+      - realworld-docker-network
 
   api_db:
     image: mongo:4.1.8-xenial
     container_name: realworld-docker-api-db
     volumes:
       - mongodb_api:/data/db
+    networks:
+      - realworld-docker-network
 
   auth_db:
     image: mongo:4.1.8-xenial
     container_name: realworld-docker-auth-db
     volumes:
       - mongodb_auth:/data/db
+    networks:
+      - realworld-docker-network
 
   nginx:
     build: ./nginx
@@ -58,9 +68,14 @@ services:
       - "80:80"
     depends_on:
       - frontend
-
+    networks:
+      - realworld-docker-network
 
 volumes:
   mongodb_api:
   mongodb_auth:
+
+networks:
+  realworld-docker-network:
+    driver: bridge
 
