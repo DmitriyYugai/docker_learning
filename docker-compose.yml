@@ -49,6 +49,15 @@ services:
     volumes:
       - mongodb_auth:/data/db
 
+  nginx:
+    build: ./nginx
+    container_name: realworld-docker-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+
+
 volumes:
   mongodb_api:
   mongodb_auth:
